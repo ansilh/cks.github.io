@@ -1,5 +1,5 @@
 <!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1"><meta name=generator content="Hugo 0.121.1"><meta name=generator content="Relearn 5.23.2+tip"><meta name=robots content="noindex, nofollow, noarchive, noimageindex"><meta name=description content="Kubernetes pocket gude and more"><meta name=author content="Ansil H"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://cks.ansilh.com/images/hero.png"><meta name=twitter:title content="Cluster Setup :: Hugo Relearn Theme"><meta name=twitter:description content="Kubernetes pocket gude and more"><meta property="og:title" content="Cluster Setup :: Hugo Relearn Theme"><meta property="og:description" content="Kubernetes pocket gude and more"><meta property="og:type" content="website"><meta property="og:url" content="https://cks.ansilh.com/02-cluster_setup/index.html"><meta property="og:image" content="https://cks.ansilh.com/images/hero.png"><meta property="og:site_name" content="Hugo Relearn Theme"><title>Cluster Setup :: Hugo Relearn Theme</title>
-<link href=../images/favicon.png?1738794166 rel=icon type=image/png><link href=../css/fontawesome-all.min.css?1738794166 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../css/fontawesome-all.min.css?1738794166 rel=stylesheet></noscript><link href=../css/nucleus.css?1738794166 rel=stylesheet><link href=../css/auto-complete.css?1738794166 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../css/auto-complete.css?1738794166 rel=stylesheet></noscript><link href=../css/perfect-scrollbar.min.css?1738794166 rel=stylesheet><link href=../css/fonts.css?1738794166 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../css/fonts.css?1738794166 rel=stylesheet></noscript><link href=../css/theme.css?1738794166 rel=stylesheet><link href=../css/theme-neon.css?1738794166 rel=stylesheet id=R-variant-style><link href=../css/chroma-neon.css?1738794166 rel=stylesheet id=R-variant-chroma-style><link href=../css/variant.css?1738794166 rel=stylesheet><link href=../css/print.css?1738794166 rel=stylesheet media=print><link href=../css/format-print.css?1738794166 rel=stylesheet><link href=../css/ie.css?1738794166 rel=stylesheet><script src=../js/url.js?1738794166></script><script src=../js/variant.js?1738794166></script><script>window.index_js_url="../index.search.js";var root_url="../",baseUri=root_url.replace(/\/$/,"");window.relearn=window.relearn||{},window.relearn.baseUriFull="https://cks.ansilh.com/",window.relearn.themeVariantModifier="",window.variants&&variants.init(["neon"]),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><style>#R-body img.bg-white{background-color:#fff}</style></head><body class="mobile-support print disableInlineCopyToClipboard" data-url=../02-cluster_setup/index.html><div id=R-body class=default-animation><div id=R-body-overlay></div><nav id=R-topbar><div class=topbar-wrapper><div class=topbar-sidebar-divider></div><div class="topbar-area topbar-area-start" data-area=start><div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><button class=topbar-control onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button></div></div><ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Cluster Setup</span><meta itemprop=position content="1"></li></ol><div class="topbar-area topbar-area-end" data-area=end></div></div></nav><div id=R-main-overlay></div><main id=R-body-inner class="highlightable chapter narrow" tabindex=-1><div class=flex-block-wrapper><article class=chapter><header class=headline></header><div class=article-subheading>Chapter 2</div><h1 id=cluster-setup>Cluster Setup</h1><h4 id=cluster-setup>Cluster Setup</h4><p>In this session, we will explore how to setup a Kubernetes cluster with one master and one worker using VirtualBox</p><h3 id=pre-requisites>Pre-requisites</h3><ul><li>Linux Desktop with Internet</li><li>VirtualBox</li></ul><footer class=footline></footer></article><section><h1 class=a11y-only>Subsections of Cluster Setup</h1><article class=default><header class=headline></header><h1 id=setting-up-vms>Setting up VMs</h1><p>In this chapter, we will import Ubuntu 24.04 OVA appliance to VirtualBox and will set it up.</p><ul><li>Download Ubuntu OVA file</li></ul><div class="wrap-code highlight"><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>cd</span> ~/Downloads/
+<link href=../images/favicon.png?1738796778 rel=icon type=image/png><link href=../css/fontawesome-all.min.css?1738796778 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../css/fontawesome-all.min.css?1738796778 rel=stylesheet></noscript><link href=../css/nucleus.css?1738796778 rel=stylesheet><link href=../css/auto-complete.css?1738796778 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../css/auto-complete.css?1738796778 rel=stylesheet></noscript><link href=../css/perfect-scrollbar.min.css?1738796778 rel=stylesheet><link href=../css/fonts.css?1738796778 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../css/fonts.css?1738796778 rel=stylesheet></noscript><link href=../css/theme.css?1738796778 rel=stylesheet><link href=../css/theme-neon.css?1738796778 rel=stylesheet id=R-variant-style><link href=../css/chroma-neon.css?1738796778 rel=stylesheet id=R-variant-chroma-style><link href=../css/variant.css?1738796778 rel=stylesheet><link href=../css/print.css?1738796778 rel=stylesheet media=print><link href=../css/format-print.css?1738796778 rel=stylesheet><link href=../css/ie.css?1738796778 rel=stylesheet><script src=../js/url.js?1738796778></script><script src=../js/variant.js?1738796778></script><script>window.index_js_url="../index.search.js";var root_url="../",baseUri=root_url.replace(/\/$/,"");window.relearn=window.relearn||{},window.relearn.baseUriFull="https://cks.ansilh.com/",window.relearn.themeVariantModifier="",window.variants&&variants.init(["neon"]),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><style>#R-body img.bg-white{background-color:#fff}</style></head><body class="mobile-support print disableInlineCopyToClipboard" data-url=../02-cluster_setup/index.html><div id=R-body class=default-animation><div id=R-body-overlay></div><nav id=R-topbar><div class=topbar-wrapper><div class=topbar-sidebar-divider></div><div class="topbar-area topbar-area-start" data-area=start><div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><button class=topbar-control onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button></div></div><ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Cluster Setup</span><meta itemprop=position content="1"></li></ol><div class="topbar-area topbar-area-end" data-area=end></div></div></nav><div id=R-main-overlay></div><main id=R-body-inner class="highlightable chapter narrow" tabindex=-1><div class=flex-block-wrapper><article class=chapter><header class=headline></header><div class=article-subheading>Chapter 2</div><h1 id=cluster-setup>Cluster Setup</h1><h4 id=cluster-setup>Cluster Setup</h4><p>In this session, we will explore how to setup a Kubernetes cluster with one master and one worker using VirtualBox</p><h3 id=pre-requisites>Pre-requisites</h3><ul><li>Linux Desktop with Internet</li><li>VirtualBox</li></ul><footer class=footline></footer></article><section><h1 class=a11y-only>Subsections of Cluster Setup</h1><article class=default><header class=headline></header><h1 id=setting-up-vms>Setting up VMs</h1><p>In this chapter, we will import Ubuntu 24.04 OVA appliance to VirtualBox and will set it up.</p><ul><li>Download Ubuntu OVA file</li></ul><div class="wrap-code highlight"><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>cd</span> ~/Downloads/
 </span></span><span class=line><span class=cl>curl -LO https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.ova</span></span></code></pre></div><ul><li><p>Create a seed iso which is needed for setting initial password and login</p><ul><li>Generate new SSH keys of not already done<div class="wrap-code highlight"><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ssh-keygen</span></span></code></pre></div></li><li>Install cloud-utils<div class="wrap-code highlight"><pre tabindex=0><code>sudo apt install cloud-utils</code></pre></div></li><li>Create config to set at intial-boot<div class="wrap-code highlight"><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>cat <span class=s>&lt;&lt;EOF &gt; my-cloud-config.yaml
 </span></span></span><span class=line><span class=cl><span class=s>#cloud-config
 </span></span></span><span class=line><span class=cl><span class=s>chpasswd:
@@ -62,4 +62,129 @@ Feb 05 21:47:38 cks-master systemd[1]: Started containerd.service - containerd c
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg</code></pre></div></li><li><p>Install keys needed for k8s packages</p><div class="wrap-code highlight"><pre tabindex=0><code>curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg</code></pre></div></li><li><p>Add the appropriate Kubernetes apt repository</p><div class="wrap-code highlight"><pre tabindex=0><code># This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
 echo &#39;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /&#39; | sudo tee /etc/apt/sources.list.d/kubernetes.list</code></pre></div></li><li><p>Update the apt package index, install kubelet, kubeadm and kubectl, and pin their version:</p><div class="wrap-code highlight"><pre tabindex=0><code>sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
-sudo apt-mark hold kubelet kubeadm kubectl</code></pre></div></li><li><p>Enable kubelet</p><div class="wrap-code highlight"><pre tabindex=0><code>sudo systemctl enable --now kubelet</code></pre></div></li></ul><footer class=footline></footer></article></section></div></main></div><script src=../js/clipboard.min.js?1738794166 defer></script><script src=../js/perfect-scrollbar.min.js?1738794166 defer></script><script src=../js/theme.js?1738794166 defer></script></body></html>
+sudo apt-mark hold kubelet kubeadm kubectl</code></pre></div></li><li><p>Enable kubelet</p><div class="wrap-code highlight"><pre tabindex=0><code>sudo systemctl enable --now kubelet</code></pre></div></li></ul><footer class=footline></footer></article><article class=default><header class=headline></header><h1 id=initialize-cluster>Initialize Cluster</h1><p>In this chapter, we will initialize the master node and then will add the worker to the cluster</p><p>Logon to the master node and follow along</p><ul><li>Initialize kubeadm<div class="wrap-code highlight"><pre tabindex=0><code>sudo kubeadm init --ignore-preflight-errors=NumCPU --pod-network-cidr 10.0.0.0/16</code></pre></div>Output:-</li></ul><div class="wrap-code highlight"><pre tabindex=0><code>I0205 22:31:24.915138    4255 version.go:261] remote version is much newer: v1.32.1; falling back to: stable-1.31
+[init] Using Kubernetes version: v1.31.5
+[preflight] Running pre-flight checks
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action beforehand using &#39;kubeadm config images pull&#39;
+W0205 22:31:25.854623    4255 checks.go:846] detected that the sandbox image &#34;registry.k8s.io/pause:3.8&#34; of the container runtime is inconsistent with that used by kubeadm.It is recommended to use &#34;registry.k8s.io/pause:3.10&#34; as the CRI sandbox image.
+[certs] Using certificateDir folder &#34;/etc/kubernetes/pki&#34;
+[certs] Generating &#34;ca&#34; certificate and key
+[certs] Generating &#34;apiserver&#34; certificate and key
+[certs] apiserver serving cert is signed for DNS names [cks-master kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 192.168.0.175]
+[certs] Generating &#34;apiserver-kubelet-client&#34; certificate and key
+[certs] Generating &#34;front-proxy-ca&#34; certificate and key
+[certs] Generating &#34;front-proxy-client&#34; certificate and key
+[certs] Generating &#34;etcd/ca&#34; certificate and key
+[certs] Generating &#34;etcd/server&#34; certificate and key
+[certs] etcd/server serving cert is signed for DNS names [cks-master localhost] and IPs [192.168.0.175 127.0.0.1 ::1]
+[certs] Generating &#34;etcd/peer&#34; certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [cks-master localhost] and IPs [192.168.0.175 127.0.0.1 ::1]
+[certs] Generating &#34;etcd/healthcheck-client&#34; certificate and key
+[certs] Generating &#34;apiserver-etcd-client&#34; certificate and key
+[certs] Generating &#34;sa&#34; key and public key
+[kubeconfig] Using kubeconfig folder &#34;/etc/kubernetes&#34;
+[kubeconfig] Writing &#34;admin.conf&#34; kubeconfig file
+[kubeconfig] Writing &#34;super-admin.conf&#34; kubeconfig file
+[kubeconfig] Writing &#34;kubelet.conf&#34; kubeconfig file
+[kubeconfig] Writing &#34;controller-manager.conf&#34; kubeconfig file
+[kubeconfig] Writing &#34;scheduler.conf&#34; kubeconfig file
+[etcd] Creating static Pod manifest for local etcd in &#34;/etc/kubernetes/manifests&#34;
+[control-plane] Using manifest folder &#34;/etc/kubernetes/manifests&#34;
+[control-plane] Creating static Pod manifest for &#34;kube-apiserver&#34;
+[control-plane] Creating static Pod manifest for &#34;kube-controller-manager&#34;
+[control-plane] Creating static Pod manifest for &#34;kube-scheduler&#34;
+[kubelet-start] Writing kubelet environment file with flags to file &#34;/var/lib/kubelet/kubeadm-flags.env&#34;
+[kubelet-start] Writing kubelet configuration to file &#34;/var/lib/kubelet/config.yaml&#34;
+[kubelet-start] Starting the kubelet
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory &#34;/etc/kubernetes/manifests&#34;
+[kubelet-check] Waiting for a healthy kubelet at http://127.0.0.1:10248/healthz. This can take up to 4m0s
+[kubelet-check] The kubelet is healthy after 1.004888923s
+[api-check] Waiting for a healthy API server. This can take up to 4m0s
+[api-check] The API server is healthy after 8.502467445s
+[upload-config] Storing the configuration used in ConfigMap &#34;kubeadm-config&#34; in the &#34;kube-system&#34; Namespace
+[kubelet] Creating a ConfigMap &#34;kubelet-config&#34; in namespace kube-system with the configuration for the kubelets in the cluster
+[upload-certs] Skipping phase. Please see --upload-certs
+[mark-control-plane] Marking the node cks-master as control-plane by adding the labels: [node-role.kubernetes.io/control-plane node.kubernetes.io/exclude-from-external-load-balancers]
+[mark-control-plane] Marking the node cks-master as control-plane by adding the taints [node-role.kubernetes.io/control-plane:NoSchedule]
+[bootstrap-token] Using token: zcn9eo.k3bc7xk2hoz2k37h
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+[bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to get nodes
+[bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] Configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] Configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[bootstrap-token] Creating the &#34;cluster-info&#34; ConfigMap in the &#34;kube-public&#34; namespace
+[kubelet-finalize] Updating &#34;/etc/kubernetes/kubelet.conf&#34; to point to a rotatable kubelet client certificate and key
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run &#34;kubectl apply -f [podnetwork].yaml&#34; with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.0.175:6443 --token zcn9eo.k3bc7xk2hoz2k37h \
+	--discovery-token-ca-cert-hash sha256:9a5c622b76b969b6ebe1f80ac903f738237625c7a0375a707466dbe6e724d261 </code></pre></div><ul><li>Now logon to the worker node and execute the join command from the output</li></ul><div class="wrap-code highlight"><pre tabindex=0><code>sudo kubeadm join 192.168.0.175:6443 --token zcn9eo.k3bc7xk2hoz2k37h \
+	--discovery-token-ca-cert-hash sha256:9a5c622b76b969b6ebe1f80ac903f738237625c7a0375a707466dbe6e724d261 </code></pre></div><ul><li>Verify nodes</li></ul><div class="wrap-code highlight"><pre tabindex=0><code>mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+kubectl get nodes</code></pre></div><footer class=footline></footer></article><article class=default><header class=headline></header><h1 id=initialize-cluster>Initialize Cluster</h1><p>In this chapter, we will deploy Cilium CNI</p><p>You need to execute these steps only from master node</p><ul><li><p>Download the cilium CLI</p><div class="wrap-code highlight"><pre tabindex=0><code>CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
+CLI_ARCH=amd64
+if [ &#34;$(uname -m)&#34; = &#34;aarch64&#34; ]; then CLI_ARCH=arm64; fi
+curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+sha256sum --check cilium-linux-${CLI_ARCH}.tar.gz.sha256sum
+sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
+rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}</code></pre></div></li><li><p>Deploy CNI</p><div class="wrap-code highlight"><pre tabindex=0><code>cilium install --version 1.17.0</code></pre></div></li><li><p>Check the deployment status (It may take 10-15mins depends on your internet speed)</p><div class="wrap-code highlight"><pre tabindex=0><code>cilium status --wait</code></pre></div></li><li><p>Once deployment completes the output will show all in good shape like below.</p><div class="wrap-code highlight"><pre tabindex=0><code>    /¯¯\
+ /¯¯\__/¯¯\    Cilium:             OK
+ \__/¯¯\__/    Operator:           OK
+ /¯¯\__/¯¯\    Envoy DaemonSet:    OK
+ \__/¯¯\__/    Hubble Relay:       disabled
+    \__/       ClusterMesh:        disabled
+
+DaemonSet              cilium             Desired: 2, Ready: 2/2, Available: 2/2
+DaemonSet              cilium-envoy       Desired: 2, Ready: 2/2, Available: 2/2
+Deployment             cilium-operator    Desired: 1, Ready: 1/1, Available: 1/1
+Containers:            cilium             Running: 2
+                    cilium-envoy       Running: 2
+                    cilium-operator    Running: 1
+Cluster Pods:          2/2 managed by Cilium
+Helm chart version:    1.17.0
+Image versions         cilium             quay.io/cilium/cilium:v1.17.0@sha256:51f21bdd003c3975b5aaaf41bd21aee23cc08f44efaa27effc91c621bc9d8b1d: 2
+                    cilium-envoy       quay.io/cilium/cilium-envoy:v1.31.5-1737535524-fe8efeb16a7d233bffd05af9ea53599340d3f18e@sha256:57a3aa6355a3223da360395e3a109802867ff635cb852aa0afe03ec7bf04e545: 2
+                    cilium-operator    quay.io/cilium/operator-generic:v1.17.0@sha256:1ce5a5a287166fc70b6a5ced3990aaa442496242d1d4930b5a3125e44cccdca8: 1</code></pre></div></li><li><p>Delete the cilium operator to cleanup transient errors that may get flagged during test</p><div class="wrap-code highlight"><pre tabindex=0><code>kubectl delete pods -n kube-system -l name=cilium-operator</code></pre></div></li><li><p>You can run a connectivity test to verify the kubernetes network health</p><div class="wrap-code highlight"><pre tabindex=0><code>cilium connectivity test</code></pre></div><p>After a while, you should see below output</p><div class="wrap-code highlight"><pre tabindex=0><code>...
+ℹ️  Single-node environment detected, enabling single-node connectivity test
+ℹ️  Monitor aggregation detected, will skip some flow validation steps
+⌛ [kubernetes] Waiting for deployment cilium-test-1/client to become ready...
+⌛ [kubernetes] Waiting for deployment cilium-test-1/client2 to become ready...
+⌛ [kubernetes] Waiting for deployment cilium-test-1/echo-same-node to become ready...
+⌛ [kubernetes] Waiting for pod cilium-test-1/client-b65598b6f-n99h7 to reach DNS server on cilium-test-1/echo-same-node-5c4dc4674d-7vtmj pod...
+⌛ [kubernetes] Waiting for pod cilium-test-1/client2-84576868b4-6xjp5 to reach DNS server on cilium-test-1/echo-same-node-5c4dc4674d-7vtmj pod...
+⌛ [kubernetes] Waiting for pod cilium-test-1/client-b65598b6f-n99h7 to reach default/kubernetes service...
+⌛ [kubernetes] Waiting for pod cilium-test-1/client2-84576868b4-6xjp5 to reach default/kubernetes service...
+⌛ [kubernetes] Waiting for Service cilium-test-1/echo-same-node to become ready...
+⌛ [kubernetes] Waiting for Service cilium-test-1/echo-same-node to be synchronized by Cilium pod kube-system/cilium-vlnmr
+⌛ [kubernetes] Waiting for NodePort 192.168.0.175:32072 (cilium-test-1/echo-same-node) to become ready...
+⌛ [kubernetes] Waiting for NodePort 192.168.0.149:32072 (cilium-test-1/echo-same-node) to become ready...
+..............
+.. redacted..
+..............
+✅ [cilium-test-1] All 66 tests (275 actions) successful, 44 tests skipped, 1 scenarios skipped.</code></pre></div></li><li><p>Now cluster is ready!</p><div class="wrap-code highlight"><pre tabindex=0><code>ubuntu@cks-master:~$ kubectl get nodes
+NAME         STATUS   ROLES           AGE   VERSION
+cks-master   Ready    control-plane   32m   v1.31.5
+cks-worker   Ready    &lt;none&gt;          31m   v1.31.5
+ubuntu@cks-master:~$ 
+ubuntu@cks-master:~$ </code></pre></div></li></ul><footer class=footline></footer></article></section></div></main></div><script src=../js/clipboard.min.js?1738796778 defer></script><script src=../js/perfect-scrollbar.min.js?1738796778 defer></script><script src=../js/theme.js?1738796778 defer></script></body></html>
