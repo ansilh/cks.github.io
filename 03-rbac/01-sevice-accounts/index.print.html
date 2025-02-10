@@ -1,0 +1,54 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1"><meta name=generator content="Hugo 0.121.1"><meta name=generator content="Relearn 5.23.2+tip"><meta name=robots content="noindex, nofollow, noarchive, noimageindex"><meta name=description content="Kubernetes pocket gude and more"><meta name=author content="Ansil H"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://cks.ansilh.com/images/hero.png"><meta name=twitter:title content="Service Accounts :: Hugo Relearn Theme"><meta name=twitter:description content="Kubernetes pocket gude and more"><meta property="og:title" content="Service Accounts :: Hugo Relearn Theme"><meta property="og:description" content="Kubernetes pocket gude and more"><meta property="og:type" content="website"><meta property="og:url" content="https://cks.ansilh.com/03-rbac/01-sevice-accounts/index.html"><meta property="og:image" content="https://cks.ansilh.com/images/hero.png"><meta property="og:site_name" content="Hugo Relearn Theme"><title>Service Accounts :: Hugo Relearn Theme</title>
+<link href=../../images/favicon.png?1739217242 rel=icon type=image/png><link href=../../css/fontawesome-all.min.css?1739217242 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../../css/fontawesome-all.min.css?1739217242 rel=stylesheet></noscript><link href=../../css/nucleus.css?1739217242 rel=stylesheet><link href=../../css/auto-complete.css?1739217242 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../../css/auto-complete.css?1739217242 rel=stylesheet></noscript><link href=../../css/perfect-scrollbar.min.css?1739217242 rel=stylesheet><link href=../../css/fonts.css?1739217242 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../../css/fonts.css?1739217242 rel=stylesheet></noscript><link href=../../css/theme.css?1739217242 rel=stylesheet><link href=../../css/theme-neon.css?1739217242 rel=stylesheet id=R-variant-style><link href=../../css/chroma-neon.css?1739217242 rel=stylesheet id=R-variant-chroma-style><link href=../../css/variant.css?1739217242 rel=stylesheet><link href=../../css/print.css?1739217242 rel=stylesheet media=print><link href=../../css/format-print.css?1739217242 rel=stylesheet><link href=../../css/ie.css?1739217242 rel=stylesheet><script src=../../js/url.js?1739217242></script><script src=../../js/variant.js?1739217242></script><script>window.index_js_url="../../index.search.js";var root_url="../../",baseUri=root_url.replace(/\/$/,"");window.relearn=window.relearn||{},window.relearn.baseUriFull="https://cks.ansilh.com/",window.relearn.themeVariantModifier="",window.variants&&variants.init(["neon"]),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><style>#R-body img.bg-white{background-color:#fff}</style></head><body class="mobile-support print disableInlineCopyToClipboard" data-url=../../03-rbac/01-sevice-accounts/index.html><div id=R-body class=default-animation><div id=R-body-overlay></div><nav id=R-topbar><div class=topbar-wrapper><div class=topbar-sidebar-divider></div><div class="topbar-area topbar-area-start" data-area=start><div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><button class=topbar-control onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button></div></div><ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=../../03-rbac/index.html><span itemprop=name>RBAC</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Service Accounts</span><meta itemprop=position content="2"></li></ol><div class="topbar-area topbar-area-end" data-area=end></div></div></nav><div id=R-main-overlay></div><main id=R-body-inner class="highlightable default" tabindex=-1><div class=flex-block-wrapper><article class=default><header class=headline></header><h1 id=service-accounts>Service Accounts</h1><p>The basic unit in Kubernetes is a Pod.
+Pods runs inside a namespace.
+Every namespace have a default service account.</p><p>Why we need service account?</p><p>If your workload needs to access the Kubernetes API, then we need a mechanism to authenticate and authorize the request.
+Here we can use the service account and assign permissions to it.</p><p>This service account can then be used inside a Pod.</p><p>Every namespace have a <code>default</code> service account.</p><div class="wrap-code highlight"><pre tabindex=0><code>ubuntu@cks-master:~$ kubectl get sa
+NAME      SECRETS   AGE
+default   0         4d19h
+ubuntu@cks-master:~$ </code></pre></div><h2 id=service-account>Service account</h2><div class="wrap-code highlight"><pre tabindex=0><code>kubectl create -f - &lt;&lt;EOF
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mysvcacc
+  namespace: default
+EOF</code></pre></div><p>Create a Pod and use this service account to contact the API</p><div class="wrap-code highlight"><pre tabindex=0><code>kubectl create -f - &lt;&lt;EOF
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: api-test
+  name: api-test
+spec:
+  serviceAccountName: mysvcacc
+  containers:
+  - image: nginx
+    name: api-test
+EOF</code></pre></div><p>The authentication using service account happens via a signed JWT token which gets mounted inside the Pod.</p><p>View token</p><div class="wrap-code highlight"><pre tabindex=0><code>kubectl exec -it api-test -- cat /run/secrets/kubernetes.io/serviceaccount/token &amp;&amp; echo</code></pre></div><p>You can visit the <a href=https://jwt.io/ target=_blank>https://jwt.io/</a> to and paste the token to see the details.</p><p><img src=../../03-rbac/01-sevice-accounts/token.png alt class="figure-image nobg-white noborder nolightbox shadow" style=height:auto;width:auto loading=lazy></p><p>As the screenshot shows, the API service can indentify the token and handle authorization using the &ldquo;sub&rdquo; field.</p><p>You can control the token mount behavior using below flag.</p><div class="wrap-code highlight"><pre tabindex=0><code>FIELD: automountServiceAccountToken &lt;boolean&gt;
+
+
+DESCRIPTION:
+    AutomountServiceAccountToken indicates whether pods running as this service
+    account should have an API token automatically mounted. Can be overridden at
+    the pod level.</code></pre></div><p>In which scenario you need to set <code>automountServiceAccountToken</code> to false.</p><p>The scenario which your workload don&rsquo;t have to contact API, but need a service account.</p><p>Yes, you can use service account for another scenario where you need an imagePullSecret to pull container images.</p><h2 id=using-imagepullsecter-in-serviceaccount>Using imagePullSecter in ServiceAccount</h2><div class="wrap-code highlight"><pre tabindex=0><code>kubectl create secret docker-registry myregistrykey --docker-server=&lt;registry name&gt; \
+        --docker-username=DUMMY_USERNAME --docker-password=DUMMY_DOCKER_PASSWORD \
+        --docker-email=DUMMY_DOCKER_EMAIL</code></pre></div><div class="wrap-code highlight"><pre tabindex=0><code>kubectl patch serviceaccount mysvcacc -p &#39;{&#34;imagePullSecrets&#34;: [{&#34;name&#34;: &#34;myregistrykey&#34;}]}&#39;</code></pre></div><div class="wrap-code highlight"><pre tabindex=0><code>apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: 2021-07-07T22:02:39Z
+  name: mysvcacc
+  namespace: default
+  uid: 052fb0f4-3d50-11e5-b066-42010af0d7b6
+imagePullSecrets:
+  - name: myregistrykey</code></pre></div><h2 id=accessing-api-from-pod>Accessing API from Pod</h2><div class="wrap-code highlight"><pre tabindex=0><code>curl -k  https://${KUBERNETES_SERVICE_HOST}/api -H &#34;Authorization: Bearer $(cat /run/secrets/kubernetes.io/serviceaccount/token)&#34;</code></pre></div><div class="wrap-code highlight"><pre tabindex=0><code>{
+  &#34;kind&#34;: &#34;APIVersions&#34;,
+  &#34;versions&#34;: [
+    &#34;v1&#34;
+  ],
+  &#34;serverAddressByClientCIDRs&#34;: [
+    {
+      &#34;clientCIDR&#34;: &#34;0.0.0.0/0&#34;,
+      &#34;serverAddress&#34;: &#34;192.168.0.175:6443&#34;
+    }
+  ]
+}</code></pre></div><footer class=footline></footer></article><script src=https://giscus.app/client.js data-repo=ansilh/kubernetes.github.io data-repo-id=R_kgDOLB2cOA data-category=Announcements data-category-id=DIC_kwDOLB2cOM4CcQpH data-mapping=pathname data-strict=0 data-reactions-enabled=1 data-emit-metadata=0 data-input-position=top data-theme=preferred_color_scheme data-lang=en crossorigin=anonymous async></script></div></main></div><script src=../../js/clipboard.min.js?1739217242 defer></script><script src=../../js/perfect-scrollbar.min.js?1739217242 defer></script><script src=../../js/theme.js?1739217242 defer></script></body></html>
