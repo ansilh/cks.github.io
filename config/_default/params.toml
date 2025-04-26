@@ -24,7 +24,7 @@ images = [ "images/hero.png" ]
 # This is used for generating HTML meta tags, social media meta information
 # for the opengraph protocol and twitter cards.
 # This can be overridden in the page's frontmatter.
-description = "Kubernetes pocket gude and more"
+description = "Kubernetes security pocket gude and more"
 
 # Admin options for social media.
 # Default: not set
@@ -76,7 +76,7 @@ social.twitter = ""
 #]
 
 themeVariant = [
-	{ identifier = "neon"           }
+	{ identifier = "zen-dark"           }
 ]
 
 # Filename suffix for variant files.
